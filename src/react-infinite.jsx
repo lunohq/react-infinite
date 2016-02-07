@@ -50,7 +50,8 @@ var Infinite = React.createClass({
     isInfiniteLoading: React.PropTypes.bool,
     timeScrollStateLastsForAfterUserScrolls: React.PropTypes.number,
 
-    className: React.PropTypes.string
+    className: React.PropTypes.string,
+    smoothScrollingWrapperClassName: React.PropTypes.string,
   },
   statics: {
     containerHeightScaleFactor(factor) {
@@ -440,7 +441,10 @@ var Infinite = React.createClass({
                 ref="scrollable"
                 style={this.utils.buildScrollableStyle()}
                 onScroll={this.utils.nodeScrollListener}>
-      <div ref="smoothScrollingWrapper" style={infiniteScrollStyles}>
+      <div
+        className={this.computedProps.smoothScrollingWrapperClassName}
+        ref="smoothScrollingWrapper"
+        style={infiniteScrollStyles}>
         <div ref="topSpacer"
              style={this.buildHeightStyle(topSpacerHeight)}/>
         {this.computedProps.displayBottomUpwards && loadingSpinner}
